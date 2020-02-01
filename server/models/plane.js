@@ -1,3 +1,5 @@
+'use strict';
+
 const mongoose = require('mongoose');
 
 const planeSchema = mongoose.Schema({
@@ -11,3 +13,21 @@ const planeSchema = mongoose.Schema({
     ui: {type: Number, required: true} 
 });
 
+//add serialize method to only show what you want to user
+// blocks them from accesing other variable
+planeSchema.methods.serialize = function() {
+    return {
+    registration: this.registration,
+    maxTaxiWeight: this.maxTaxiWeight,
+    maxTakeoffWeigh: this.maxTakeoffWeight,
+    maxLandingWeight: this.maxLandingWeight,
+    maxZerofuelWeight: this.maxZerofuelWeight,
+    operationalEmptyWeight: this.operationalEmptyWeight,
+    centerOfGravity:this.centerOfGravity,
+    ui: this.ui
+    };
+  }
+
+const Plane = mongoose.model('Plane', planeSchema);
+
+module.exports = {Plane};
