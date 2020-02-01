@@ -9,7 +9,7 @@ const planeSchema = mongoose.Schema({
     maxLandingWeight: {type: Number, required: true},
     maxZerofuelWeight: {type: Number, required: true},
     operationalEmptyWeight: {type: Number, required: true},
-    centerOfGravity: {type: Number, required: true},
+    originalCenterOfGravity: {type: Number, required: true},
     ui: {type: Number, required: true} 
 });
 
@@ -23,7 +23,7 @@ planeSchema.methods.serialize = function() {
     maxLandingWeight: this.maxLandingWeight,
     maxZerofuelWeight: this.maxZerofuelWeight,
     operationalEmptyWeight: this.operationalEmptyWeight,
-    centerOfGravity:this.centerOfGravity,
+    originalCenterOfGravity:this.centerOfGravity,
     ui: this.ui
     };
   }
